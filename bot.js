@@ -124,7 +124,7 @@ bot.on('text', async (ctx) => {
       return ctx.reply(getRandomResponse(obosratElya), {
         reply_to_message_id: ctx.message.message_id,
       });
-    } else if ((username !== 'sydykovkanat' || username === 'elinwq') && messageText === 'обосрать элю') {
+    } else if ((username !== 'sydykovkanat' || username !== 'elinwq') && messageText === 'обосрать элю') {
       return ctx.reply('Ты кто такой, чтобы обсирать Элю? Только Канат может обсирать эту милую курочку');
     }
 
