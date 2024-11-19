@@ -157,7 +157,9 @@ bot.on('text', async (ctx) => {
     }
 
     if (Math.random() < 0.05) {
-      if (isMyFriends.includes(username)) return;
+      if (isMyFriends.includes(username)) {
+        return ctx.reply('Жаным менин, сени эч качан жамандабаймго😘');
+      }
       if (specialUsers.includes(username)) {
         return ctx.reply(getRandomResponse(specialResponses), { reply_to_message_id: ctx.message.message_id });
       }
