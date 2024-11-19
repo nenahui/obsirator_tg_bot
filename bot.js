@@ -120,7 +120,7 @@ bot.on('text', async (ctx) => {
       return ctx.reply('Жаным менин, сени эч качан жамандабаймго😘');
     }
 
-    if (username === 'sydykovkanat' && messageText === 'обосрать элю') {
+    if ((username === 'sydykovkanat' || username === 'elinwq') && messageText === 'обосрать элю') {
       return ctx.reply(getRandomResponse(obosratElya), {
         reply_to_message_id: ctx.message.message_id,
       });
