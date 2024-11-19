@@ -102,6 +102,8 @@ const containsTriggerWord = (text) => {
   return triggerWords.some((word) => text.toLowerCase().includes(word));
 };
 
+const isMyFriends = ['xadelte', 'arkalox', 'hueuser', 'emnegedir'];
+
 bot.on('text', async (ctx) => {
   try {
     const chatId = ctx.message.chat.id;
@@ -111,7 +113,10 @@ bot.on('text', async (ctx) => {
 
     if (excludedChatIds.includes(chatId)) return;
 
-    if (username === 'xadelte' || username === 'arkalox' || username === 'hueuser' || username === 'emnegedir') {
+    if (
+      (username === 'xadelte' || username === 'arkalox' || username === 'hueuser' || username === 'emnegedir') &&
+      isReplyToBot
+    ) {
       return ctx.reply('Жаным менин, сени эч качан жамандабаймго😘');
     }
 
@@ -152,6 +157,7 @@ bot.on('text', async (ctx) => {
     }
 
     if (Math.random() < 0.05) {
+      if (isMyFriends.includes(username)) return;
       if (specialUsers.includes(username)) {
         return ctx.reply(getRandomResponse(specialResponses), { reply_to_message_id: ctx.message.message_id });
       }
