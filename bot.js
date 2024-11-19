@@ -111,6 +111,10 @@ bot.on('text', async (ctx) => {
 
     if (excludedChatIds.includes(chatId)) return;
 
+    if (username === 'xadelte' || username === 'arkalox' || 'hueuser') {
+      return ctx.reply('Жаным менин, сени эч качан жамандабаймго😘');
+    }
+
     if (username === 'sydykovkanat' && messageText === 'обосрать элю') {
       return ctx.reply(getRandomResponse(obosratElya), {
         reply_to_message_id: ctx.message.message_id,
