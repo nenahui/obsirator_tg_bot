@@ -1,6 +1,8 @@
 const { Telegraf } = require('telegraf');
 
-const bot = new Telegraf('7193499229:AAH6yQ-LvMYOM_ZKMkUXFoQ0Q0jhU2SECK4');
+const token = process.env.TOKEN;
+
+const bot = new Telegraf(token);
 
 const excludedChatIds = [2474916197];
 
