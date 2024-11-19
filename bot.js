@@ -111,7 +111,7 @@ bot.on('text', async (ctx) => {
 
     if (excludedChatIds.includes(chatId)) return;
 
-    if (username === 'xadelte' || username === 'arkalox' || username === 'hueuser') {
+    if (username === 'xadelte' || username === 'arkalox' || username === 'hueuser' || username === 'emnegedir') {
       return ctx.reply('Жаным менин, сени эч качан жамандабаймго😘');
     }
 
