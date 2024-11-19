@@ -128,7 +128,7 @@ bot.on('text', async (ctx) => {
       return ctx.reply('Ты кто такой, чтобы обсирать Элю? Только Канат может обсирать эту милую курочку');
     }
 
-    if (containsTriggerWord(messageText)) {
+    if (containsTriggerWord(messageText) && !isMyFriends.includes(username)) {
       return ctx.reply(getRandomResponse(generalResponses), { reply_to_message_id: ctx.message.message_id });
     }
 
