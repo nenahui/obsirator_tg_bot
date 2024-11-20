@@ -158,9 +158,7 @@ bot.on('text', async (ctx) => {
       (username !== 'sydykovkanat' || username !== 'kall_333' || username !== 'sss12mm1') &&
       messageText === 'обосрать сайкал'
     ) {
-      return ctx.reply(
-        'Ты кто такой, чтобы обсирать Сайкал? Только Канат, Сезим и Сайкал могут обсирать эту милую телятину',
-      );
+      return ctx.reply('Э ты себя обосри да. Канат, Сезима и Сайкал могут обсирать эту милую телятину');
     }
 
     if (containsTriggerWord(messageText) && !isMyFriends.includes(username)) {
