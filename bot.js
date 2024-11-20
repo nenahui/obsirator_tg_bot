@@ -4,6 +4,26 @@ const token = process.env.TOKEN;
 
 const bot = new Telegraf(token);
 
+(async () => {
+  try {
+    const updates = await bot.telegram.getUpdates();
+    if (updates.length > 0) {
+      const lastUpdateId = updates[updates.length - 1].update_id;
+      await bot.telegram.getUpdates({ offset: lastUpdateId + 1 });
+    }
+    console.log('Старые сообщения проигнорированы.');
+  } catch (error) {
+    console.error('Ошибка при игнорировании старых сообщений:', error);
+  }
+
+  try {
+    await bot.launch();
+    console.log('Bot started...');
+  } catch (error) {
+    console.error('Ошибка при запуске бота:', error);
+  }
+})();
+
 const excludedChatIds = [2474916197];
 
 const generalResponses = [
@@ -205,13 +225,6 @@ bot.on('text', async (ctx) => {
     console.error('Ошибка обработки сообщения:', error);
   }
 });
-
-try {
-  bot.launch();
-  console.log('Bot started...');
-} catch (error) {
-  console.error('Ошибка запуска бота:', error);
-}
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
