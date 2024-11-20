@@ -100,9 +100,18 @@ const customResponses = {
   ],
   rayanoou: ['Таластык эмессин', 'Раяна бок', 'Раянанын бети жок'],
   sss12mm1: ['Сезимка лучшая❤️❤️❤️', 'Сезима такая красивая утютютютют', 'Такая хорошенькая', 'Нюнюнюнюнюнюн милашка'],
+  kall_333: ['Сайкал жинди', 'Сайкал, бокту же', 'Сайкал, адам болчу', 'Уят сага Сайкал'],
 };
 
 const obosratElya = ['Элина сарт', 'Элина курт', 'Элина чалакыргызka', 'элина сылаш', 'эля, ты же моя курочка'];
+const obosratSaikal = [
+  'Сайкал жаман',
+  'Сайкал эшек',
+  'Сайкал фуууу',
+  'Сайкал бок',
+  'Сайкал адам болчу',
+  'Сайкал, сен качан адам болосун?',
+];
 
 const getRandomResponse = (responses) => {
   return responses[Math.floor(Math.random() * responses.length)];
@@ -136,6 +145,22 @@ bot.on('text', async (ctx) => {
       });
     } else if ((username !== 'sydykovkanat' || username !== 'elinwq') && messageText === 'обосрать элю') {
       return ctx.reply('Ты кто такой, чтобы обсирать Элю? Только Канат может обсирать эту милую курочку');
+    }
+
+    if (
+      (username === 'sydykovkanat' || username === 'kall_333' || username === 'sss12mm1') &&
+      messageText === 'обосрать сайкал'
+    ) {
+      return ctx.reply(getRandomResponse(obosratSaikal), {
+        reply_to_message_id: ctx.message.message_id,
+      });
+    } else if (
+      (username !== 'sydykovkanat' || username !== 'kall_333' || username !== 'sss12mm1') &&
+      messageText === 'обосрать сайкал'
+    ) {
+      return ctx.reply(
+        'Ты кто такой, чтобы обсирать Сайкал? Только Канат, Сезим и Сайкал могут обсирать эту милую телятину',
+      );
     }
 
     if (containsTriggerWord(messageText) && !isMyFriends.includes(username)) {
